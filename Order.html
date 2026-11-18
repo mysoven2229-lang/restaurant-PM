@@ -31,6 +31,32 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+
+    <script type="module">
+  // 1. นำเข้า Firebase App และ Realtime Database
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-database.js";
+
+  // 2. ค่า Config ของคุณจาก Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyO-zzj01r0r1MAYct1-gXGU33PaeNDKQ",
+    authDomain: "restaurant-7bb1a.firebaseapp.com",
+    projectId: "restaurant-7bb1a",
+    storageBucket: "restaurant-7bb1a.firebasestorage.app",
+    messagingSenderId: "5162530385",
+    appId: "1:5162530385:web:91072e6e275ed0c01f2a70",
+    measurementId: "G-QKH5GWS4N5"
+  };
+
+  // 3. เริ่มต้นระบบ Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // ทำให้ตัวแปร db เรียกใช้งานจากภายนอกแท็ก script นี้ได้
+  window.db = db;
+  window.dbRef = { ref, push, set, onValue };
+</script>
+
 </head>
 <body class="bg-darkbg text-gray-100 min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black pb-24 border-t-2 border-gold-500">
 
